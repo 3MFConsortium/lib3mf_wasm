@@ -1,0 +1,37 @@
+{
+  "name": "@3mfconsortium/lib3mf",
+  "version": "2.4.1",
+  "description": "lib3mf (Emscripten WASM) packaged for Node and browsers",
+  "license": "BSD-2-Clause",
+  "author": "3MF Consortium",
+  "type": "module",
+  "main": "./cjs/index.cjs",
+  "module": "./index.js",
+  "files": [
+    "index.js",
+    "cjs",
+    "build",
+    "README.md"
+  ],
+  "exports": {
+    ".": {
+      "import": "./index.js",
+      "require": "./cjs/index.cjs"
+    },
+    "./wasm": "./build/lib3mf.wasm"
+  },
+  "sideEffects": false,
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "test": "node examples/convert.js"
+  },
+  "keywords": [
+    "lib3mf",
+    "3mf",
+    "webassembly",
+    "wasm",
+    "emscripten"
+  ]
+}
