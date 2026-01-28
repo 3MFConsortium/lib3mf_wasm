@@ -4,6 +4,10 @@
   "description": "lib3mf (Emscripten WASM) packaged for Node and browsers",
   "license": "BSD-2-Clause",
   "author": "3MF Consortium",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/3MFConsortium/lib3mf_wasm"
+  },
   "type": "module",
   "main": "./cjs/index.cjs",
   "module": "./index.js",
