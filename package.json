@@ -1,6 +1,6 @@
 {
   "name": "@3mfconsortium/lib3mf",
-  "version": "2.5.0-fix.1",
+  "version": "2.5.0-fix.2",
   "description": "lib3mf (Emscripten WASM) packaged for Node and browsers",
   "license": "BSD-2-Clause",
   "author": "3MF Consortium",
