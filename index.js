@@ -1,5 +1,5 @@
-  // @3mfconsortium/lib3mf — universal ESM entry point
-  import factory from './build/lib3mf.cjs';
+// @3mfconsortium/lib3mf — universal ESM entry point
+import factory from './build/lib3mf.mjs';
 
 const wasmUrlPromise = (async () => {
   const isNode =
@@ -32,7 +32,7 @@ export default async function lib3mf(userOptions = {}) {
 
   if (typeof factory !== 'function') {
     throw new Error(
-      '@3mfconsortium/lib3mf (ESM): The factory function could not be loaded from ./build/lib3mf.cjs. Make sure the file exists and exports a function.'
+      '@3mfconsortium/lib3mf (ESM): The factory function could not be loaded from ./build/lib3mf.mjs. Make sure the file exists and exports a function.'
     );
   }
 

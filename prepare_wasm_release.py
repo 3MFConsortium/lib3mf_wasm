@@ -2,7 +2,7 @@
 """Prepare this repository for a new lib3mf WASM npm release.
 
 This script updates:
-- build/lib3mf.cjs
+- build/lib3mf.mjs
 - build/lib3mf.wasm
 - package.json version
 - package-lock.json version
@@ -159,7 +159,8 @@ def write_artifacts(
     wasm_origin: str,
     dry_run: bool,
 ) -> None:
-    js_dst = BUILD_DIR / "lib3mf.cjs"
+    js_dst = BUILD_DIR / "lib3mf.mjs"
+    legacy_js_dst = BUILD_DIR / "lib3mf.cjs"
     wasm_dst = BUILD_DIR / "lib3mf.wasm"
 
     if dry_run:
@@ -169,6 +170,8 @@ def write_artifacts(
 
     BUILD_DIR.mkdir(parents=True, exist_ok=True)
     js_dst.write_bytes(js_data)
+    if legacy_js_dst.exists():
+        legacy_js_dst.unlink()
     wasm_dst.write_bytes(wasm_data)
     print(f"Wrote JS runtime {js_origin} -> {js_dst}")
     print(f"Wrote WASM binary {wasm_origin} -> {wasm_dst}")
