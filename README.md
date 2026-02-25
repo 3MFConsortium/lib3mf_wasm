@@ -4,6 +4,18 @@ Thin JS wrapper around the Emscripten-built **lib3mf** WebAssembly module.
 Shipping targets both **Node.js** (ESM & CommonJS) and modern **browser bundlers** (Vite, Webpack, esbuild…).  
 The default export is the async initializer returned by Emscripten's factory.
 
+## Release Status
+
+- Packaged lib3mf core version: v2.5.0
+- npm package version: v2.5.0
+- WASM source artifact: `https://github.com/3MFConsortium/lib3mf/releases/download/v2.5.0/lib3mf-wasm-2.5.0.zip`
+
+Update these values by running:
+
+```bash
+python prepare_wasm_release.py <version>
+```
+
 ## Install
 
 ```bash
