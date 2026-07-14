@@ -7,7 +7,7 @@ The default export is the async initializer returned by Emscripten's factory.
 ## Release Status
 
 - Packaged lib3mf core version: v2.6.0 prerelease
-- npm package version: v2.6.0-alpha.1
+- npm package version: v2.6.0-alpha.2
 - WASM source: local Emscripten build from the lib3mf 2.6.0 prerelease branch
 
 Update these values by running:

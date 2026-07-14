@@ -52,13 +52,13 @@ jobs:
       contents: read
       id-token: write
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v6
 
-      - uses: actions/setup-node@v4
+      - uses: actions/setup-node@v6
         with:
-          node-version: "20"
+          node-version: "24"
           registry-url: "https://registry.npmjs.org"
-          cache: "npm"
+          package-manager-cache: false
 
       - name: Install dependencies (handles no lockfile)
         run: |
@@ -75,8 +75,6 @@ jobs:
           fi
 
       - name: Publish to npm
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           # fail if "private": true
           node -e "if(require('./package.json').private){process.exit(1)}"
@@ -90,4 +88,4 @@ jobs:
           PUBLISH_TAG="latest"
           if [[ "$PKG_VERSION" == *-* ]]; then PUBLISH_TAG="next"; fi
 
-          npm publish $ACCESS_FLAG --tag "$PUBLISH_TAG" --provenance
+          npm publish $ACCESS_FLAG --tag "$PUBLISH_TAG"
