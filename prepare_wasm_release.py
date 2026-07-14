@@ -91,7 +91,14 @@ def is_url(value: str) -> bool:
 
 
 def version_is_valid(version: str) -> bool:
-    return bool(re.fullmatch(r"[0-9]+\.[0-9]+\.[0-9]+", version))
+    return bool(
+        re.fullmatch(
+            r"[0-9]+\.[0-9]+\.[0-9]+"
+            r"(?:-[0-9A-Za-z]+(?:\.[0-9A-Za-z]+)*)?"
+            r"(?:\+[0-9A-Za-z]+(?:\.[0-9A-Za-z]+)*)?",
+            version,
+        )
+    )
 
 
 def find_best_candidate(names: list[str], allowed_exts: tuple[str, ...]) -> str:
@@ -255,7 +262,9 @@ def main() -> int:
     args = parse_args()
 
     if not version_is_valid(args.version):
-        raise ValueError("Version must be in MAJOR.MINOR.PATCH format (example: 2.5.0).")
+        raise ValueError(
+            "Version must be valid SemVer (examples: 2.6.0 or 2.6.0-alpha.1)."
+        )
 
     source = args.source or args.artifact_url_template.format(version=args.version)
     source_path = pathlib.Path(source)

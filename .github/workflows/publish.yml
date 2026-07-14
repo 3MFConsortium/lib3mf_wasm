@@ -83,7 +83,11 @@ jobs:
 
           # add --access public for first publish of scoped public pkgs
           PKG_NAME=$(node -p "require('./package.json').name")
+          PKG_VERSION=$(node -p "require('./package.json').version")
           ACCESS_FLAG=""
           if [[ "$PKG_NAME" == @*/* ]]; then ACCESS_FLAG="--access public"; fi
 
-          npm publish $ACCESS_FLAG --provenance
+          PUBLISH_TAG="latest"
+          if [[ "$PKG_VERSION" == *-* ]]; then PUBLISH_TAG="next"; fi
+
+          npm publish $ACCESS_FLAG --tag "$PUBLISH_TAG" --provenance
